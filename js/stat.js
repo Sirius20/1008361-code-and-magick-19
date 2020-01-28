@@ -1,5 +1,5 @@
 var CLOUD_WIDTH = 420;
-var CLOUD_HIEGHT = 270;
+var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100; // координаты
 var CLOUD_Y = 10;
 var GAP = 10;
@@ -8,11 +8,11 @@ var WIDTH_COLUMN = 40;
 var QUANTITY_COLUMN = 4;
 var GAP_COLUMN = 50;
 var GAP_LEFT = (CLOUD_WIDTH - WIDTH_COLUMN * QUANTITY_COLUMN - GAP_COLUMN*(QUANTITY_COLUMN-1))/2;
-var GAP_DOWN = (CLOUD_HIEGHT - HEIGHT_COLUMN)/3;
+var GAP_DOWN = (CLOUD_HEIGHT - HEIGHT_COLUMN)/4;
 
-var renderCloud = function (ctx, x, y, color){
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HIEGHT);
+  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
 var getMaxElement = function(arr) {
@@ -28,7 +28,7 @@ var getMaxElement = function(arr) {
     return maxElement;
 };
 
-var randomOne = function () {
+var randomNumber = function () {
   return Math.floor(Math.random() * 100 + 1);
 };
 
@@ -48,13 +48,15 @@ window.renderStatistics = function (ctx, names, times) {
 
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+      ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
     }
     else {
-      ctx.fillStyle = 'hsl(210, '+ randomOne() +'%, 50%)';
+      ctx.fillStyle = 'hsl(210, '+ randomNumber() +'%, 50%)';
+      ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
     }
-  
-    ctx.fillText (names[i], CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HIEGHT - GAP_DOWN));
-    ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HIEGHT - GAP_DOWN - GAP_DOWN/2), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
-    ctx.fillText (Math.round(times[i]), CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HIEGHT - GAP_DOWN*2) - (HEIGHT_COLUMN * times[i]) / maxTime);
+
+    ctx.fillStyle = '#000';
+    ctx.fillText (names[i], CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN));
+    ctx.fillText (Math.round(times[i]), CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN * 2) - (HEIGHT_COLUMN * times[i]) / maxTime);
   };
 };
