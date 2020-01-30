@@ -28,7 +28,7 @@ var getMaxElement = function(arr) {
     return maxElement;
 };
 
-var randomNumberСreation = function () {
+var getRandomNumber = function () {
   return Math.floor(Math.random() * 100 + 1);
 };
 
@@ -50,7 +50,7 @@ window.renderStatistics = function (ctx, names, times) {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
     else {
-      ctx.fillStyle = 'hsl(210, '+ randomNumberСreation() +'%, 50%)';
+      ctx.fillStyle = 'hsl(210, '+ getRandomNumber() +'%, 50%)';
     }
 
     ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
