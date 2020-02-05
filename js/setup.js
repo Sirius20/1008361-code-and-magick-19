@@ -25,7 +25,7 @@ var getColorWizard = function () {
   for (var i = 0; i < 4; i++) {
     wizards [i] =
       {
-        name: WIZARD_NAMES[getRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandom (WIZARD_SURNAMES)],
+        name: WIZARD_NAMES[getRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandom(WIZARD_SURNAMES)],
         coatColor: WIZARD_COATS[getRandom(WIZARD_COATS)],
         eyesColor: WIZARD_EYES[getRandom(WIZARD_EYES)]
       };
