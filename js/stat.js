@@ -1,4 +1,4 @@
-var CLOUD_WIDTH = 420;
+ CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100; // координаты
 var CLOUD_Y = 10;
@@ -24,11 +24,11 @@ var getMaxElement = function(arr) {
         maxElement = arr[i];
       }
     }
-
+    
     return maxElement;
 };
 
-var randomNumber = function () {
+var getRandomNumber = function () {
   return Math.floor(Math.random() * 100 + 1);
 };
 
@@ -39,8 +39,8 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = '#000';
   ctx.font = '16px, PT Mono';
   ctx.textBaseline = 'hanging';
-  ctx.fillText('Ура, вы победили!', CLOUD_X + GAP * 6, CLOUD_Y);
-  ctx.fillText('Список результатов:', CLOUD_X + GAP * 6, CLOUD_Y + GAP * 2);
+  ctx.fillText('Ура, вы победили!', CLOUD_X + GAP * 6, CLOUD_Y + GAP);
+  ctx.fillText('Список результатов:', CLOUD_X + GAP * 6, CLOUD_Y + GAP * 3);
 
   var maxTime = getMaxElement(times);
 
@@ -48,15 +48,14 @@ window.renderStatistics = function (ctx, names, times) {
 
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-      ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
     }
     else {
-      ctx.fillStyle = 'hsl(210, '+ randomNumber() +'%, 50%)';
-      ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
+      ctx.fillStyle = 'hsl(210, '+ getRandomNumber() +'%, 50%)';
     }
 
+    ctx.fillRect (CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, ( - HEIGHT_COLUMN * times[i]) / maxTime);
     ctx.fillStyle = '#000';
     ctx.fillText (names[i], CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN));
     ctx.fillText (Math.round(times[i]), CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN * 2) - (HEIGHT_COLUMN * times[i]) / maxTime);
   };
-}; 
+};
