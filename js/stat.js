@@ -53,7 +53,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
     else {
       ctx.fillStyle = 'hsl(210, ' + getRandomNumber() + ' %, 50%)';
-    };
+    }
 
     ctx.fillRect(CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN - GAP_DOWN / 3), WIDTH_COLUMN, (-HEIGHT_COLUMN * times[i]) / maxTime);
     ctx.fillStyle = '#000';
