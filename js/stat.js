@@ -24,7 +24,7 @@ var getMaxElement = function(arr) {
         maxElement = arr[i];
       }
     }
-    
+
     return maxElement;
 };
 
@@ -59,4 +59,4 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText (names[i], CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN));
     ctx.fillText (Math.round(times[i]), CLOUD_X + GAP_LEFT + (WIDTH_COLUMN + GAP_COLUMN) * i, CLOUD_Y + (CLOUD_HEIGHT - GAP_DOWN * 2) - (HEIGHT_COLUMN * times[i]) / maxTime);
   };
-};
+}; 
