@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'
 ];
@@ -23,13 +23,13 @@ var getRandom = function (wizardArr) {
 
 var getColorWizard = function () {
   for (var i = 0; i < 4; i++) {
-    wizards [i] = 
+    wizards [i] =
       {
-      name: WIZARD_NAMES[getRandom (WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandom (WIZARD_SURNAMES)],
-      coatColor: WIZARD_COATS[getRandom (WIZARD_COATS)],
-      eyesColor: WIZARD_EYES[getRandom (WIZARD_EYES)]
-      }
-  };
+        name: WIZARD_NAMES[getRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandom (WIZARD_SURNAMES)],
+        coatColor: WIZARD_COATS[getRandom(WIZARD_COATS)],
+        eyesColor: WIZARD_EYES[getRandom(WIZARD_EYES)]
+      };
+  }
   return wizards [i];
 };
 
@@ -41,12 +41,12 @@ var renderWizard = function (wizard) {
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
- 
+
   return wizardElement;
 };
 
 var getFragment = function () {
-  var fragment = document.createDocumentFragment()
+  var fragment = document.createDocumentFragment();
   for (var j = 0; j < wizards.length; j++) {
     fragment.appendChild(renderWizard(wizards[j]));
   }
