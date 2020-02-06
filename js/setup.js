@@ -26,7 +26,7 @@ var getRandomNumber = function (wizardArr) {
 };
 
 var getColorWizard = function () {
-  for (var i = 0; i < MAGIC_NUMBER; i++) {
+  for (var i = 0; i < QUANTITY_WIZARDS; i++) {
     wizards[i] =
       {
         name: WIZARD_NAMES[getRandomNumber(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandomNumber(WIZARD_SURNAMES)],
