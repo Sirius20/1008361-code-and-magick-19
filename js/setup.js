@@ -8,18 +8,19 @@ var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 16
 ];
 var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'
 ];
-var MAGIC_NUMBER = 4;
+var QUANTITY_WIZARDS = 4;
 
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
+userDialog.classList.remove('hidden');
+
 var wizards = [];
 
-var getRandom = function (wizardArr) {
+var getRandomNumber = function (wizardArr) {
   return Math.floor(Math.random() * wizardArr.length);
 
 };
@@ -28,9 +29,9 @@ var getColorWizard = function () {
   for (var i = 0; i < MAGIC_NUMBER; i++) {
     wizards[i] =
       {
-        name: WIZARD_NAMES[getRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandom(WIZARD_SURNAMES)],
-        coatColor: WIZARD_COATS[getRandom(WIZARD_COATS)],
-        eyesColor: WIZARD_EYES[getRandom(WIZARD_EYES)]
+        name: WIZARD_NAMES[getRandomNumber(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandomNumber(WIZARD_SURNAMES)],
+        coatColor: WIZARD_COATS[getRandomNumber(WIZARD_COATS)],
+        eyesColor: WIZARD_EYES[getRandomNumber(WIZARD_EYES)]
       };
   }
   return wizards[i];
