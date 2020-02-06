@@ -8,7 +8,8 @@ var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 16
 ];
 var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'
 ];
-var wizards = [];
+var MAGIC_NUMBER = 4;
+
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
@@ -16,21 +17,23 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
+var wizards = [];
+
 var getRandom = function (wizardArr) {
   return Math.floor(Math.random() * wizardArr.length);
 
 };
 
 var getColorWizard = function () {
-  for (var i = 0; i < 4; i++) {
-    wizards [i] =
+  for (var i = 0; i < MAGIC_NUMBER; i++) {
+    wizards[i] =
       {
         name: WIZARD_NAMES[getRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandom(WIZARD_SURNAMES)],
         coatColor: WIZARD_COATS[getRandom(WIZARD_COATS)],
         eyesColor: WIZARD_EYES[getRandom(WIZARD_EYES)]
       };
   }
-  return wizards [i];
+  return wizards[i];
 };
 
 getColorWizard();

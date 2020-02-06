@@ -50,8 +50,7 @@ window.renderStatistics = function (ctx, names, times) {
 
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    }
-    else {
+    } else {
       ctx.fillStyle = 'hsl(210, ' + getRandomNumber() + ' %, 50%)';
     }
 
