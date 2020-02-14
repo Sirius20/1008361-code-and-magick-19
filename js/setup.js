@@ -61,3 +61,79 @@ var getFragment = function () {
 getFragment();
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+var setupOpen = document.querySelector('.setup-open');
+var setupClouse = userDialog.querySelector('.setup-close');
+var userNameInput = setup.querySelector('.setup-user-name');
+var button = document.querySelector('.button');
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === 27) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  userDialog.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 13) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 13) {
+    closePopup();
+  }
+});
+
+button.addEventListener('click', function () {
+  
+});
+
+userNameInput.addEventListener('invalid', function (evt) {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Обязательное поле');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
+});
+
+var setupWizard = document.querySelector('.setup-wizard');
+var wizardCoat = setupWizard.querySelector('.wizard-coat');
+var wizardEyes = setupWizard.querySelector('.wizard-eyes');
+var setupFireball = document.querySelector('.setup-fireball-wrap');
+var WIZARD_FIREBALL = ['#ee4830', '#30a8ee', '#5ce6c0',' #e848d5', '#e6e848'];
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill = WIZARD_COATS[getRandomNumber(WIZARD_COATS)];
+});
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill = WIZARD_EYES[getRandomNumber(WIZARD_EYES)];
+});
+
+setupFireball.addEventListener('click', function () {
+  setupFireball.value = WIZARD_FIREBALL[getRandomNumber(WIZARD_FIREBALL)];
+  setupFireball.removeChild(input);
+});
