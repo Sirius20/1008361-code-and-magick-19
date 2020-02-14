@@ -64,7 +64,7 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 var setupOpen = document.querySelector('.setup-open');
 var setupClouse = userDialog.querySelector('.setup-close');
-var userNameInput = setup.querySelector('.setup-user-name');
+var userNameInput = userDialog.querySelector('.setup-user-name');
 var button = document.querySelector('.button');
 
 var onPopupEscPress = function (evt) {
@@ -93,21 +93,21 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-setupClose.addEventListener('click', function () {
+setupClouse.addEventListener('click', function () {
   closePopup();
 });
 
-setupClose.addEventListener('keydown', function (evt) {
+setupClouse.addEventListener('keydown', function (evt) {
   if (evt.keyCode === 13) {
     closePopup();
   }
 });
 
 button.addEventListener('click', function () {
-  
+
 });
 
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
@@ -123,7 +123,8 @@ var setupWizard = document.querySelector('.setup-wizard');
 var wizardCoat = setupWizard.querySelector('.wizard-coat');
 var wizardEyes = setupWizard.querySelector('.wizard-eyes');
 var setupFireball = document.querySelector('.setup-fireball-wrap');
-var WIZARD_FIREBALL = ['#ee4830', '#30a8ee', '#5ce6c0',' #e848d5', '#e6e848'];
+var FireInput = setupFireball.querySelector('input');
+var WIZARD_FIREBALL = ['#ee4830', '#30a8ee', '#5ce6c0', ' #e848d5', '#e6e848'];
 
 wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = WIZARD_COATS[getRandomNumber(WIZARD_COATS)];
@@ -135,5 +136,5 @@ wizardEyes.addEventListener('click', function () {
 
 setupFireball.addEventListener('click', function () {
   setupFireball.value = WIZARD_FIREBALL[getRandomNumber(WIZARD_FIREBALL)];
-  setupFireball.removeChild(input);
+  setupFireball.removeChild(FireInput);
 });
