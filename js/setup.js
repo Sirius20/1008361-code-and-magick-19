@@ -77,8 +77,7 @@ var closePopup = function () {
 
   if (!userNameInput.activeElement) {
     userDialog.classList.add('hidden');
-  };
-  
+  }
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
