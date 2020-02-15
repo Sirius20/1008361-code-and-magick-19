@@ -22,6 +22,9 @@ var wizardCoat = setupWizard.querySelector('.wizard-coat');
 var wizardEyes = setupWizard.querySelector('.wizard-eyes');
 var setupFireball = document.querySelector('.setup-fireball-wrap');
 var fireInput = setupFireball.querySelector('input');
+var wizardInput = document.querySelector('.setup-wizard-appearance');
+var eyesInput = wizardInput.querySelector('input[name=eyes-color]');
+var coatInput = wizardInput.querySelector('input[name=coat-color]');
 var wizards = [];
 
 var getRandomNumber = function (wizardArr) {
@@ -56,11 +59,10 @@ var getFragment = function () {
     fragment.appendChild(renderWizard(wizards[j]));
   }
   similarListElement.appendChild(fragment);
-  return similarListElement;
 };
 
 var onDocumentKeydown = function (evt) {
-  if (evt.keyCode === ESC) {
+  if (evt.key === ESC) {
     closePopup();
   }
 };
@@ -72,6 +74,11 @@ var openPopup = function () {
 
 var closePopup = function () {
   userDialog.classList.add('hidden');
+
+  if (!userNameInput.activeElement) {
+    userDialog.classList.add('hidden');
+  };
+  
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
@@ -80,7 +87,7 @@ setupOpen.addEventListener('click', function () {
 });
 
 setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER) {
+  if (evt.key === ENTER) {
     openPopup();
   }
 });
@@ -90,16 +97,18 @@ setupClose.addEventListener('click', function () {
 });
 
 setupClose.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER) {
+  if (evt.key === ENTER) {
     closePopup();
   }
 });
 
 wizardCoat.addEventListener('click', function () {
+  coatInput.value = WIZARD_COATS[getRandomNumber(WIZARD_COATS)];
   wizardCoat.style.fill = WIZARD_COATS[getRandomNumber(WIZARD_COATS)];
 });
 
 wizardEyes.addEventListener('click', function () {
+  eyesInput.value = WIZARD_EYES[getRandomNumber(WIZARD_EYES)];
   wizardEyes.style.fill = WIZARD_EYES[getRandomNumber(WIZARD_EYES)];
 });
 
