@@ -59,7 +59,7 @@ var getFragment = function () {
   return similarListElement;
 };
 
-var onPopupEscPress = function (evt) {
+var onDocumentKeydown = function (evt) {
   if (evt.keyCode === ESC) {
     closePopup();
   }
@@ -67,12 +67,12 @@ var onPopupEscPress = function (evt) {
 
 var openPopup = function () {
   userDialog.classList.remove('hidden');
-  document.addEventListener('keydown', onPopupEscPress);
+  document.addEventListener('keydown', onDocumentKeydown);
 };
 
 var closePopup = function () {
   userDialog.classList.add('hidden');
-  document.removeEventListener('keydown', onPopupEscPress);
+  document.removeEventListener('keydown', onDocumentKeydown);
 };
 
 setupOpen.addEventListener('click', function () {
