@@ -6,8 +6,8 @@ var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 16
 var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
 var WIZARD_FIREBALL = ['#ee4830', '#30a8ee', '#5ce6c0', ' #e848d5', '#e6e848'];
 var QUANTITY_WIZARDS = 4;
-var ENTER = 13;
-var ESC = 27;
+var ENTER = 'Enter';
+var ESC = 'Escape';
 
 var userDialog = document.querySelector('.setup');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
@@ -73,10 +73,10 @@ var openPopup = function () {
 };
 
 var closePopup = function () {
-  userDialog.classList.add('hidden');
+  var hide = userDialog.classList.add('hidden');
 
   if (!userNameInput.activeElement) {
-    userDialog.classList.add('hidden');
+    hide;
   }
   document.removeEventListener('keydown', onDocumentKeydown);
 };
