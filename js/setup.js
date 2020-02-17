@@ -73,10 +73,8 @@ var openPopup = function () {
 };
 
 var closePopup = function () {
-  var hide = userDialog.classList.add('hidden');
-
   if (!userNameInput.activeElement) {
-    hide;
+    userDialog.classList.add('hidden');
   }
   document.removeEventListener('keydown', onDocumentKeydown);
 };
